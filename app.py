@@ -1,3 +1,4 @@
+import os
 from taipy.gui import Gui, Markdown, notify
 
 # Données du professeur
@@ -100,5 +101,22 @@ pages = {
     "contact": contact_md
 }
 
-# Exécution de l'application avec rechargement automatique
-Gui(pages=pages).run(use_reloader=True)
+#Export du site statique pour le déploiement
+def export_static_site():
+    # Crée un dossier pour le site statique
+    os.makedirs("static_site", exist_ok=True)
+
+    # Exporte chaque page en HTML
+    gui = Gui(pages=pages)
+    for page_name, page_content in pages.items():
+        html_content = gui.render(page_content)
+        with open(f"static_site/{page_name}.html", "w", encoding="utf-8") as f:
+            f.write(html_content)
+
+if __name__ == "__main__":
+    # exportation de la version statique
+    if "--export" in sys.argv:
+        export_static_site()
+    else:
+      # Exécution de l'application avec rechargement automatique
+      Gui(pages=pages).run(use_reloader=True)
