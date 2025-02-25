@@ -1,4 +1,4 @@
-import os
+import os, sys
 from taipy.gui import Gui, Markdown, notify
 
 # Données du professeur
@@ -42,7 +42,7 @@ home_content = """
     <div class="col-md-6 text-center">
       <h2 class="text-light mb-4">Bienvenue</h2>
       <p class="lead text-light">Cours personnalisés de piano et guitare pour tous niveaux.</p>
-      <img src="https://picsum.photos/600/400" class="img-fluid rounded mt-4" />
+      <img src="JavaScript-logo.png" class="img-fluid rounded mt-4" />
     </div>
   </div>
 </div>
